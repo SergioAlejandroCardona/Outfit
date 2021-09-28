@@ -1,0 +1,53 @@
+﻿@model outfit_project.Models.sale
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Crear Venta</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="row">
+            <div class="input-field col s6 m6 l6">
+                <i class="material-icons prefix">date_range</i>
+                @Html.LabelFor(model => model.date, "Fecha", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.date, new { htmlAttributes = new { @class = "datepicker", type = "text" } })
+                @Html.ValidationMessageFor(model => model.date, "", new { @class = "text-danger" })
+            </div>
+            <div class="input-field col s6 m6 l6">
+                <i class="material-icons prefix">assignment</i>
+                @Html.LabelFor(model => model.total, "Total", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.EditorFor(model => model.total, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.total, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12 m12 l12">
+                <i class="material-icons prefix">assignment_ind</i>
+                @Html.DropDownList("id_reservation", null, htmlAttributes: new { @class = "form-control" })
+                @Html.LabelFor(model => model.id_reservation, "Reserva", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.ValidationMessageFor(model => model.id_reservation, "", new { @class = "text-danger" })
+            </div>
+            <div class="input-field col s12 m12 l12">
+                <i class="material-icons prefix">assignment_ind</i>
+                @Html.DropDownList("id_seller", null, htmlAttributes: new { @class = "form-control" })
+                @Html.LabelFor(model => model.id_seller, "Vendedor", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.ValidationMessageFor(model => model.id_seller, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row center">
+            <div class="col s12 m12 l12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Crear<i class="material-icons right">save</i></button> | @Html.ActionLink("Volver", "Index")
+            </div>
+        </div>
+
+    </div>
+}

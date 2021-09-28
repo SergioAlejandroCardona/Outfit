@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Mi aplicación ASP.NET</title>
+    <script src="~/Scripts/jquery-3.4.1.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/materialize.js"></script>
+    <script src="~/Scripts/materialize.min.js"></script>
+    <link href="~/Content/materialize.css" rel="stylesheet" />
+    <link href="~/Content/materialize.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <script src="~/Scripts/general.js"></script>
+    <link href="~/Content/MyStyle.css" rel="stylesheet" />
+</head>
+<body>
+    <nav>
+        <div class="nav-wrapper grey darken-3">
+            <ul id="Font_Style">
+                <li>
+                    <img id="Logo" src="~/Content/Imgs/logo.jpeg" />
+                </li>
+                <li>@Html.ActionLink("Style Outfit", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })</li>
+            </ul>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li>@Html.ActionLink("Inicio", "Index", "Home")</li>
+                <li>@Html.ActionLink("Cliente", "Index", "customers")</li>
+                <li>@Html.ActionLink("Vendedor", "Index", "sellers")</li>
+                <li>@Html.ActionLink("Proveedor", "Index", "suppliers")</li>
+                <li>@Html.ActionLink("Producto", "Index", "products")</li>
+                <li>@Html.ActionLink("Reserva", "Index", "reservations")</li>
+                <li>@Html.ActionLink("Cita", "Index", "appointments")</li>
+                <li>@Html.ActionLink("Venta", "Index", "sales")</li>
+            </ul>
+        </div>
+    </nav>
+    <div>
+        <div id="render_body">
+            @RenderBody()
+        </div>
+        <hr />
+        <footer>
+            <div class="row grey darken-3">
+                <div class="col s3">
+                    <ul id="Font_Style">
+                        <li>Linea de atencion</li>
+                        <li>XXX-XXXXXXXX</li>
+                    </ul>
+                </div>
+                <div class="col s3">
+                    <ul id="Font_Style">
+                        <li>Información</li>
+                        <li><p></p></li>
+                    </ul>
+                </div>
+                <div class="col s3">
+                    <ul id="Font_Style">
+                        <li>Productos</li>
+                        <li>Camisetas</li>
+                        <li>Pantalones</li>
+                    </ul>
+                </div>
+                <div class="col s3">
+                    <ul id="Font_Style">
+                        <li>Redes sociales</li>
+                        <li>
+                            <img id="icon" src="~/Content/Imgs/instagram.jpeg" />
+                            <img id="icon" src="~/Content/Imgs/facebook.jpeg" />
+                            <img id="icon" src="~/Content/Imgs/tiktok.jpeg" />
+                            <img id="icon" src="~/Content/Imgs/twiter.jpeg" />
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

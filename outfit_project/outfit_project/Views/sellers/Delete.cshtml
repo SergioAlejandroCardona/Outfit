@@ -1,0 +1,44 @@
+﻿@model outfit_project.Models.seller
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Seguro que desea eliminar este vendedor?</h3>
+<div>
+    <table class="striped">
+
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Apellido</th>
+                <th>Dirección</th>
+                <th>Teléfono</th>
+                <th>Email</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th>@Html.DisplayFor(model => model.names)</th>
+                <th>@Html.DisplayFor(model => model.last_names)</th>
+                <th>@Html.DisplayFor(model => model.address)</th>
+                <th>@Html.DisplayFor(model => model.phone_number)</th>
+                <th>@Html.DisplayFor(model => model.email)</th>
+            </tr>
+        </tbody>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row center">
+            <div class="col s12 m12 l12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Eliminar<i class="material-icons right">delete_forever</i></button> | @Html.ActionLink("Volver", "Index")
+            </div>
+        </div>
+    }
+</div>

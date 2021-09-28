@@ -1,0 +1,38 @@
+﻿@model outfit_project.Models.reservation
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Seguro que desea eliminar esta reserva?</h3>
+<div>
+    <table class="striped">
+
+        <thead>
+            <tr>
+                <th>Cliente</th>
+                <th>Producto</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th>@Html.DisplayFor(model => model.customer.names)</th>
+                <th>@Html.DisplayFor(model => model.product.name)</th>
+            </tr>
+        </tbody>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row center">
+            <div class="col s12 m12 l12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Eliminar<i class="material-icons right">delete_forever</i></button> | @Html.ActionLink("Volver", "Index")
+            </div>
+        </div>
+    }
+</div>

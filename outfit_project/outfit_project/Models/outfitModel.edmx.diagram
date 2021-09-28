@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="570ab30e65bc4e9d8eed3861012a829d" Name="Diagram1">
+        <EntityTypeShape EntityType="outfitModel.appointment" Width="1.5" PointX="5.625" PointY="3.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="outfitModel.customer" Width="1.5" PointX="3.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="outfitModel.product" Width="1.5" PointX="3.5" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="outfitModel.reservation" Width="1.5" PointX="5.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="outfitModel.sale" Width="1.5" PointX="7.5" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="outfitModel.seller" Width="1.5" PointX="9.625" PointY="0.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="outfitModel.supplier" Width="1.5" PointX="1" PointY="0.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="outfitModel.sysdiagrams" Width="1.5" PointX="0.5" PointY="3.375" IsExpanded="true" />
+        <AssociationConnector Association="outfitModel.FK_appointment_reservation" ManuallyRouted="false" />
+        <AssociationConnector Association="outfitModel.FK_reservation_customer" ManuallyRouted="false" />
+        <AssociationConnector Association="outfitModel.FK_product_supplier" ManuallyRouted="false" />
+        <AssociationConnector Association="outfitModel.FK_reservation_product" ManuallyRouted="false" />
+        <AssociationConnector Association="outfitModel.FK_sale_reservation" ManuallyRouted="false" />
+        <AssociationConnector Association="outfitModel.FK_sale_seller" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

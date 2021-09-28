@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="outfitModelStoreContainer" CdmEntityContainer="outfitEntities1">
+    <EntitySetMapping Name="appointment">
+      <EntityTypeMapping TypeName="outfitModel.appointment">
+        <MappingFragment StoreEntitySet="appointment">
+          <ScalarProperty Name="id_appointment" ColumnName="id_appointment" />
+          <ScalarProperty Name="id_reservation" ColumnName="id_reservation" />
+          <ScalarProperty Name="date" ColumnName="date" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="customer">
+      <EntityTypeMapping TypeName="outfitModel.customer">
+        <MappingFragment StoreEntitySet="customer">
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="document_type" ColumnName="document_type" />
+          <ScalarProperty Name="document_number" ColumnName="document_number" />
+          <ScalarProperty Name="names" ColumnName="names" />
+          <ScalarProperty Name="last_names" ColumnName="last_names" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="email" ColumnName="email" />
+          <ScalarProperty Name="city" ColumnName="city" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="product">
+      <EntityTypeMapping TypeName="outfitModel.product">
+        <MappingFragment StoreEntitySet="product">
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="description" ColumnName="description" />
+          <ScalarProperty Name="id_supplier" ColumnName="id_supplier" />
+          <ScalarProperty Name="stock" ColumnName="stock" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="reservation">
+      <EntityTypeMapping TypeName="outfitModel.reservation">
+        <MappingFragment StoreEntitySet="reservation">
+          <ScalarProperty Name="id_reservation" ColumnName="id_reservation" />
+          <ScalarProperty Name="id_customer" ColumnName="id_customer" />
+          <ScalarProperty Name="id_product" ColumnName="id_product" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sale">
+      <EntityTypeMapping TypeName="outfitModel.sale">
+        <MappingFragment StoreEntitySet="sale">
+          <ScalarProperty Name="id_sale" ColumnName="id_sale" />
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="total" ColumnName="total" />
+          <ScalarProperty Name="id_reservation" ColumnName="id_reservation" />
+          <ScalarProperty Name="id_seller" ColumnName="id_seller" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="seller">
+      <EntityTypeMapping TypeName="outfitModel.seller">
+        <MappingFragment StoreEntitySet="seller">
+          <ScalarProperty Name="id_seller" ColumnName="id_seller" />
+          <ScalarProperty Name="names" ColumnName="names" />
+          <ScalarProperty Name="last_names" ColumnName="last_names" />
+          <ScalarProperty Name="address" ColumnName="address" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+          <ScalarProperty Name="email" ColumnName="email" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="supplier">
+      <EntityTypeMapping TypeName="outfitModel.supplier">
+        <MappingFragment StoreEntitySet="supplier">
+          <ScalarProperty Name="id_supplier" ColumnName="id_supplier" />
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="phone_number" ColumnName="phone_number" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="sysdiagrams">
+      <EntityTypeMapping TypeName="outfitModel.sysdiagrams">
+        <MappingFragment StoreEntitySet="sysdiagrams">
+          <ScalarProperty Name="name" ColumnName="name" />
+          <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+          <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+          <ScalarProperty Name="version" ColumnName="version" />
+          <ScalarProperty Name="definition" ColumnName="definition" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

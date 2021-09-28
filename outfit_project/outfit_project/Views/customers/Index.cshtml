@@ -1,0 +1,61 @@
+﻿@model IEnumerable<outfit_project.Models.customer>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Clientes</h2>
+
+<form class="col s6">
+    <div class="row">
+        <div class="input-field col s3">
+            <input placeholder="Buscar cliente" id="SearchCustomer" name="SearchCustomer" type="text" class="validate">
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    <div class="col s1 m1 l1 center-align">
+        <a class="black-text" href='@Url.Action("Create", "customers")'><i class="material-icons icon medium">add_circle</i></a>
+    </div>
+</div>
+
+
+<table class="striped" id="customerList">
+    <thead>
+        <tr>
+            <th>Tipo de documento</th>
+            <th>Número de documento</th>
+            <th>Nombres</th>
+            <th>Apellidos</th>
+            <th>Dirección</th>
+            <th>Télefono</th>
+            <th>Email</th>
+            <th>Ciudad</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.document_type)</td>
+                <td>@Html.DisplayFor(modelItem => item.document_number)</td>
+                <td>@Html.DisplayFor(modelItem => item.names)</td>
+                <td>@Html.DisplayFor(modelItem => item.last_names)</td>
+                <td>@Html.DisplayFor(modelItem => item.address)</td>
+                <td>@Html.DisplayFor(modelItem => item.phone_number)</td>
+                <td>@Html.DisplayFor(modelItem => item.email)</td>
+                <td>@Html.DisplayFor(modelItem => item.city)</td>
+                <td>
+                    <a class="black-text" href='@Url.Action("Edit", "customers", new { id = item.id_customer })'><i class="material-icons">edit</i></a>
+                </td>
+                <td>|</td>
+                <td>
+                    <a class="black-text" href='@Url.Action("Delete", "customers", new { id = item.id_customer})'><i class="material-icons">delete</i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

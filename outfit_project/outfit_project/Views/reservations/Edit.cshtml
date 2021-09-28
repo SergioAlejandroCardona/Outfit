@@ -1,0 +1,42 @@
+﻿@model outfit_project.Models.reservation
+
+@{
+    ViewBag.Title = "Edit";
+}
+
+<h2>Editar Reserva</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.HiddenFor(model => model.id_reservation)
+
+        <div class="row">
+            <div class="input-field col s12 m12 l12">
+                <i class="material-icons prefix">assignment_ind</i>
+                @Html.DropDownList("id_customer", null, htmlAttributes: new { @class = "form-control" })
+                @Html.LabelFor(model => model.id_customer, "Cliente", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.ValidationMessageFor(model => model.id_customer, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="input-field col s12 m12 l12">
+                <i class="material-icons prefix">assignment_ind</i>
+                @Html.DropDownList("id_product", null, htmlAttributes: new { @class = "form-control" })
+                @Html.LabelFor(model => model.id_product, "Producto", htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.ValidationMessageFor(model => model.id_product, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="row center">
+            <div class="col s12 m12 l12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Guardar Cambios<i class="material-icons right">save</i></button> | @Html.ActionLink("Volver", "Index")
+            </div>
+        </div>
+
+    </div>
+}

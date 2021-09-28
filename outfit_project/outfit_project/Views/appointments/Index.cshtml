@@ -1,0 +1,48 @@
+﻿@model IEnumerable<outfit_project.Models.appointment>
+
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Citas</h2>
+
+<form class="col s6">
+    <div class="row">
+        <div class="input-field col s3">
+            <input placeholder="Buscar cita" id="SearchCita" name="SearchCita" type="text" class="validate">
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    <div class="col s1 m1 l1 center-align">
+        <a class="black-text" href='@Url.Action("Create", "appointments")'><i class="material-icons icon medium">add_circle</i></a>
+    </div>
+</div>
+
+
+<table class="striped" id="appointmentList">
+    <thead>
+        <tr>
+            <th>Reserva</th>
+            <th>Fecha Cita</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.id_reservation)</td>
+                <td>@item.date.ToString("dd/MM/yyyy")</td>
+                <td>
+                    <a class="black-text" href='@Url.Action("Edit", "appointments", new { id = item.id_appointment })'><i class="material-icons">edit</i></a>
+                </td>
+                <td>|</td>
+                <td>
+                    <a class="black-text" href='@Url.Action("Delete", "appointments", new { id = item.id_appointment})'><i class="material-icons">delete</i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>

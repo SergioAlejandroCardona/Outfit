@@ -1,0 +1,38 @@
+﻿@model outfit_project.Models.appointment
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Eliminar</h2>
+
+<h3>¿Seguro que desea eliminar esta cita?</h3>
+<div>
+    <table class="striped">
+
+        <thead>
+            <tr>
+                <th>Id Reserva</th>
+                <th>Fecha Cita</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr>
+                <th>@Html.DisplayFor(model => model.id_reservation)</th>
+                <th>@Html.DisplayFor(model => model.date)</th>
+            </tr>
+        </tbody>
+    </table>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="row center">
+            <div class="col s12 m12 l12">
+                <button class="btn waves-effect waves-light" type="submit" name="action">Eliminar<i class="material-icons right">delete_forever</i></button> | @Html.ActionLink("Volver", "Index")
+            </div>
+        </div>
+    }
+</div>

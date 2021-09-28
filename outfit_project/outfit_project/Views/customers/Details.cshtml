@@ -1,0 +1,82 @@
+﻿@model outfit_project.Models.customer
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>customer</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.document_type)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.document_type)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.document_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.document_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.names)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.names)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.last_names)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.last_names)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.phone_number)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.phone_number)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.email)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.city)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.city)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_customer }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

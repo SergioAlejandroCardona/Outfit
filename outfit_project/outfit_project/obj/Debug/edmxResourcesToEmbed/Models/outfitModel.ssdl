@@ -1,0 +1,188 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="outfitModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="appointment">
+    <Key>
+      <PropertyRef Name="id_appointment" />
+    </Key>
+    <Property Name="id_appointment" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_reservation" Type="bigint" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+  </EntityType>
+  <EntityType Name="customer">
+    <Key>
+      <PropertyRef Name="id_customer" />
+    </Key>
+    <Property Name="id_customer" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="document_type" Type="nvarchar" MaxLength="5" Nullable="false" />
+    <Property Name="document_number" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="names" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="last_names" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="address" Type="nvarchar" MaxLength="50" />
+    <Property Name="phone_number" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+    <Property Name="city" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="product">
+    <Key>
+      <PropertyRef Name="id_product" />
+    </Key>
+    <Property Name="id_product" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="description" Type="nvarchar" MaxLength="100" />
+    <Property Name="id_supplier" Type="bigint" Nullable="false" />
+    <Property Name="stock" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="reservation">
+    <Key>
+      <PropertyRef Name="id_reservation" />
+    </Key>
+    <Property Name="id_reservation" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="id_customer" Type="bigint" Nullable="false" />
+    <Property Name="id_product" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sale">
+    <Key>
+      <PropertyRef Name="id_sale" />
+    </Key>
+    <Property Name="id_sale" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="date" Type="date" Nullable="false" />
+    <Property Name="total" Type="int" Nullable="false" />
+    <Property Name="id_reservation" Type="bigint" Nullable="false" />
+    <Property Name="id_seller" Type="bigint" Nullable="false" />
+  </EntityType>
+  <EntityType Name="seller">
+    <Key>
+      <PropertyRef Name="id_seller" />
+    </Key>
+    <Property Name="id_seller" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="names" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="last_names" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="address" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone_number" Type="nvarchar" MaxLength="20" Nullable="false" />
+    <Property Name="email" Type="nvarchar" MaxLength="100" Nullable="false" />
+  </EntityType>
+  <EntityType Name="supplier">
+    <Key>
+      <PropertyRef Name="id_supplier" />
+    </Key>
+    <Property Name="id_supplier" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="name" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="phone_number" Type="nvarchar" MaxLength="20" Nullable="false" />
+  </EntityType>
+  <EntityType Name="sysdiagrams">
+    <Key>
+      <PropertyRef Name="diagram_id" />
+    </Key>
+    <Property Name="name" Type="nvarchar" MaxLength="128" Nullable="false" />
+    <Property Name="principal_id" Type="int" Nullable="false" />
+    <Property Name="diagram_id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="version" Type="int" />
+    <Property Name="definition" Type="varbinary(max)" />
+  </EntityType>
+  <Association Name="FK_appointment_reservation">
+    <End Role="reservation" Type="Self.reservation" Multiplicity="1" />
+    <End Role="appointment" Type="Self.appointment" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reservation">
+        <PropertyRef Name="id_reservation" />
+      </Principal>
+      <Dependent Role="appointment">
+        <PropertyRef Name="id_reservation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_product_supplier">
+    <End Role="supplier" Type="Self.supplier" Multiplicity="1" />
+    <End Role="product" Type="Self.product" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="supplier">
+        <PropertyRef Name="id_supplier" />
+      </Principal>
+      <Dependent Role="product">
+        <PropertyRef Name="id_supplier" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reservation_customer">
+    <End Role="customer" Type="Self.customer" Multiplicity="1" />
+    <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="customer">
+        <PropertyRef Name="id_customer" />
+      </Principal>
+      <Dependent Role="reservation">
+        <PropertyRef Name="id_customer" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_reservation_product">
+    <End Role="product" Type="Self.product" Multiplicity="1" />
+    <End Role="reservation" Type="Self.reservation" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="product">
+        <PropertyRef Name="id_product" />
+      </Principal>
+      <Dependent Role="reservation">
+        <PropertyRef Name="id_product" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sale_reservation">
+    <End Role="reservation" Type="Self.reservation" Multiplicity="1" />
+    <End Role="sale" Type="Self.sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="reservation">
+        <PropertyRef Name="id_reservation" />
+      </Principal>
+      <Dependent Role="sale">
+        <PropertyRef Name="id_reservation" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_sale_seller">
+    <End Role="seller" Type="Self.seller" Multiplicity="1" />
+    <End Role="sale" Type="Self.sale" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="seller">
+        <PropertyRef Name="id_seller" />
+      </Principal>
+      <Dependent Role="sale">
+        <PropertyRef Name="id_seller" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="outfitModelStoreContainer">
+    <EntitySet Name="appointment" EntityType="Self.appointment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="customer" EntityType="Self.customer" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="product" EntityType="Self.product" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="reservation" EntityType="Self.reservation" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sale" EntityType="Self.sale" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="seller" EntityType="Self.seller" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="supplier" EntityType="Self.supplier" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK_appointment_reservation" Association="Self.FK_appointment_reservation">
+      <End Role="reservation" EntitySet="reservation" />
+      <End Role="appointment" EntitySet="appointment" />
+    </AssociationSet>
+    <AssociationSet Name="FK_product_supplier" Association="Self.FK_product_supplier">
+      <End Role="supplier" EntitySet="supplier" />
+      <End Role="product" EntitySet="product" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reservation_customer" Association="Self.FK_reservation_customer">
+      <End Role="customer" EntitySet="customer" />
+      <End Role="reservation" EntitySet="reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_reservation_product" Association="Self.FK_reservation_product">
+      <End Role="product" EntitySet="product" />
+      <End Role="reservation" EntitySet="reservation" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sale_reservation" Association="Self.FK_sale_reservation">
+      <End Role="reservation" EntitySet="reservation" />
+      <End Role="sale" EntitySet="sale" />
+    </AssociationSet>
+    <AssociationSet Name="FK_sale_seller" Association="Self.FK_sale_seller">
+      <End Role="seller" EntitySet="seller" />
+      <End Role="sale" EntitySet="sale" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

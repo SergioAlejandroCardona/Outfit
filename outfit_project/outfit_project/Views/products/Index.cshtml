@@ -1,0 +1,53 @@
+﻿@model IEnumerable<outfit_project.Models.product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Productos</h2>
+
+<form class="col s6">
+    <div class="row">
+        <div class="input-field col s3">
+            <input placeholder="Buscar producto" id="SearchProduct" name="SearchProduct" type="text" class="validate">
+        </div>
+    </div>
+</form>
+
+<div class="row">
+    <div class="col s1 m1 l1 center-align">
+        <a class="black-text" href='@Url.Action("Create", "products")'><i class="material-icons icon medium">add_circle</i></a>
+    </div>
+</div>
+
+
+<table class="striped" id="productList">
+    <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Proveedor</th>
+            <th>Cantidad</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@Html.DisplayFor(modelItem => item.name)</td>
+                <td>@Html.DisplayFor(modelItem => item.description)</td>
+                <td>@Html.DisplayFor(modelItem => item.supplier.name)</td>
+                <td>@Html.DisplayFor(modelItem => item.stock)</td>
+                <td>
+                    <a class="black-text" href='@Url.Action("Edit", "products", new { id = item.id_product })'><i class="material-icons">edit</i></a>
+                </td>
+                <td>|</td>
+                <td>
+                    <a class="black-text" href='@Url.Action("Delete", "products", new { id = item.id_product})'><i class="material-icons">delete</i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+
+</table>
