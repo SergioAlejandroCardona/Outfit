@@ -39,7 +39,7 @@ namespace outfit_project.Controllers
         // GET: reservations/Create
         public ActionResult Create()
         {
-            ViewBag.id_customer = new SelectList(db.customer, "id_customer", "document_type");
+            ViewBag.id_customer = new SelectList(db.customer, "id_customer", "names");
             ViewBag.id_product = new SelectList(db.product, "id_product", "name");
             return View();
         }
@@ -58,7 +58,7 @@ namespace outfit_project.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.id_customer = new SelectList(db.customer, "id_customer", "document_type", reservation.id_customer);
+            ViewBag.id_customer = new SelectList(db.customer, "id_customer", "names", reservation.id_customer);
             ViewBag.id_product = new SelectList(db.product, "id_product", "name", reservation.id_product);
             return View(reservation);
         }
@@ -75,7 +75,7 @@ namespace outfit_project.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.id_customer = new SelectList(db.customer, "id_customer", "document_type", reservation.id_customer);
+            ViewBag.id_customer = new SelectList(db.customer, "id_customer", "names", reservation.id_customer);
             ViewBag.id_product = new SelectList(db.product, "id_product", "name", reservation.id_product);
             return View(reservation);
         }
@@ -93,7 +93,7 @@ namespace outfit_project.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.id_customer = new SelectList(db.customer, "id_customer", "document_type", reservation.id_customer);
+            ViewBag.id_customer = new SelectList(db.customer, "id_customer", "names", reservation.id_customer);
             ViewBag.id_product = new SelectList(db.product, "id_product", "name", reservation.id_product);
             return View(reservation);
         }
